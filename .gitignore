@@ -1,0 +1,10 @@
+*.log
+*.pyc
+composer.phar
+composer.lock
+
+/tmp
+/.idea
+/vendor
+/public/webgrind
+/public/opcache

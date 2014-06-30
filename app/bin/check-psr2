@@ -1,0 +1,4 @@
+#!/bin/bash
+
+php app/bin/resources/php-cs-fixer.phar fix ./src --level=psr2
+php app/bin/resources/php-cs-fixer.phar fix ./app --level=psr2

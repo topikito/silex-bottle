@@ -1,0 +1,28 @@
+{
+	"name": "topikito/silex-bottle",
+	"description": "Silex Bottle - Silex, ready to use",
+	"authors": [
+		{
+			"name": "Roberto Nygaard",
+			"email": "topikito@gmail.com"
+		}
+	],
+	"require": {
+		"twig/twig": "*",
+		"silex/silex": "1.*",
+		"doctrine/dbal": "*",
+		"monolog/monolog": "*",
+		"doctrine/common": "*",
+		"symfony/symfony": "*",
+		"swiftmailer/swiftmailer": "5.*",
+		"facebook/php-sdk": "@stable",
+		"ruflin/elastica": "*",
+		"tpyo/amazon-s3-php-class": "*",
+		"moriony/silex-mongo-provider": "1.*",
+		"mandrill/mandrill": "1.*",
+		"kertz/twitteroauth": "dev-master"
+	},
+	"require-dev": {
+		"silex/web-profiler": "1.*"
+	}
+}

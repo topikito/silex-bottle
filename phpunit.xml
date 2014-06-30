@@ -1,0 +1,29 @@
+<phpunit colors="true" bootstrap="tests/test_bootstrap.php" processUncoveredFilesFromWhitelist="true">
+    <php>
+        <env name="APPLICATION_ENV" value="testing" />
+    </php>
+
+    <testsuites>
+        <testsuite name="UnitTests">
+            <directory suffix="_test.php">tests/unit/</directory>
+        </testsuite>
+
+        <testsuite name="RegressionTests">
+            <directory suffix="_test.php">tests/regression/</directory>
+        </testsuite>
+    </testsuites>
+
+    <filter>
+        <whitelist>
+            <directory suffix=".php">./src</directory>
+            <exclude>
+                <directory>vendor</directory>
+                <directory>src/libs/s3</directory>
+                <directory>src/libs/facebook</directory>
+                <directory>src/libs/elastica</directory>
+                <directory>src/libs/mailchimp</directory>
+                <directory>src/libs/twitteroauth</directory>
+            </exclude>
+        </whitelist>
+    </filter>
+</phpunit>
