@@ -20,6 +20,7 @@ abstract class Instructor implements Loadable
 
     private $_routes;
     private $_services;
+    private $_configs;
 
     public function __construct(Application $_app)
     {
@@ -27,6 +28,7 @@ abstract class Instructor implements Loadable
 
         $this->_routes      = [];
         $this->_services    = [];
+        $this->_configs     = [];
     }
 
     /**
@@ -38,6 +40,11 @@ abstract class Instructor implements Loadable
      * @return mixed
      */
     abstract public function prepareServices();
+
+    /**
+     * @return mixed
+     */
+    abstract public function prepareConfigs();
 
     /**
      * @param $routes
@@ -62,8 +69,16 @@ abstract class Instructor implements Loadable
     }
 
     /**
+     * @param $configs
      *
+     * @return bool
      */
+    protected function _addConfigs($configs)
+    {
+        $this->_configs = array_merge($this->_configs, $configs);
+        return $this;
+    }
+
     public function loadRoutes()
     {
         foreach ($this->_routes as $route) {
@@ -74,9 +89,6 @@ abstract class Instructor implements Loadable
         }
     }
 
-    /**
-     *
-     */
     public function loadServices()
     {
         foreach ($this->_services as $service) {
@@ -87,14 +99,26 @@ abstract class Instructor implements Loadable
         }
     }
 
+    public function loadConfigs()
+    {
+        foreach ($this->_configs as $config) {
+            /**
+             * @var $service \app\config\Bridges\ConfigLoader
+             */
+            $config->load();
+        }
+    }
+
     /**
      * Default loader
      */
     public function load()
     {
+        $this->prepareConfigs();
         $this->prepareServices();
         $this->prepareRoutes();
 
+        $this->loadConfigs();
         $this->loadServices();
         $this->loadRoutes();
     }

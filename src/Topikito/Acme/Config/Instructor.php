@@ -8,6 +8,15 @@ use Topikito\Acme\Config\Route;
 class Instructor extends config\Bridges\Instructor
 {
 
+    public function prepareConfigs()
+    {
+        $configs = [
+            new config\Bridges\ConfigLoader($this->_app, __NAMESPACE__)
+        ];
+
+        $this->_addConfigs($configs);
+    }
+
     public function prepareRoutes()
     {
         $routes = [
