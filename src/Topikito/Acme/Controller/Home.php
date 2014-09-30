@@ -2,16 +2,37 @@
 
 namespace Topikito\Acme\Controller;
 
-use app\core;
+use app\Core;
+use Topikito\Acme\Plugin\AuthUser;
+use Topikito\Acme\Sal;
+use Silex\Application;
 
-class Home extends core\Controller
+/**
+ * Class Home
+ *
+ * @package Topikito\Acme\Controller
+ */
+class Home extends Core\BaseController
 {
 
+    /**
+     * @param Application $app
+     */
+    public function __construct(Application $app)
+    {
+        parent::__construct($app);
+        $this->initView([
+                'pageTitle' => 'Acme.',
+                'pageDescription' => 'Acme foo bar baz.',
+            ]);
+    }
+
+    /**
+     * @return mixed
+     */
     public function index()
     {
-        $html = 'HELLO WORLD';
-
-        return new core\Response($html);
+        return $this->view->render('Home/index.html.twig');
     }
 
 }

@@ -2,31 +2,22 @@
 
 namespace Topikito\Acme\Config\Route;
 
-use app\config\Bridges\Router;
+use app\config\Bridge\Router;
 use Silex\Application;
+use \Topikito\Acme\Controller;
 
 /**
  * Class Home
  *
- * @package app\config\Route
+ * @package Topikito\Acme\Config\Route
  */
 class Home extends Router
 {
 
-    /**
-     * @var \Silex\Application
-     */
-    protected $_app;
-
-    public function __construct($_app)
-    {
-        $this->_app = $_app;
-    }
-
     public function load()
     {
         $this->_app->match('/', function () {
-                $controller = new \Topikito\Acme\Controller\Home($this->_app);
+                $controller = new Controller\Home($this->_app);
                 return $controller->index();
             });
     }

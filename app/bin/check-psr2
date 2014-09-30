@@ -1,4 +1,23 @@
 #!/bin/bash
 
-php app/bin/resources/php-cs-fixer.phar fix ./src --level=psr2
+EXIT_CODE=0
+
+php app/bin/resources/php-cs-fixer.phar fix ./src/Topikito/Acme/Config --level=psr2
+EXIT_CODE=$((EXIT_CODE || $?))
+php app/bin/resources/php-cs-fixer.phar fix ./src/Topikito/Acme/Controller --level=psr2
+EXIT_CODE=$((EXIT_CODE || $?))
+php app/bin/resources/php-cs-fixer.phar fix ./src/Topikito/Acme/Exception --level=psr2
+EXIT_CODE=$((EXIT_CODE || $?))
+php app/bin/resources/php-cs-fixer.phar fix ./src/Topikito/Acme/Helper --level=psr2
+EXIT_CODE=$((EXIT_CODE || $?))
+php app/bin/resources/php-cs-fixer.phar fix ./src/Topikito/Acme/Provider --level=psr2
+EXIT_CODE=$((EXIT_CODE || $?))
+php app/bin/resources/php-cs-fixer.phar fix ./src/Topikito/Acme/Sal --level=psr2
+EXIT_CODE=$((EXIT_CODE || $?))
+php app/bin/resources/php-cs-fixer.phar fix ./src/Topikito/Acme/Plugin --level=psr2
+EXIT_CODE=$((EXIT_CODE || $?))
+
 php app/bin/resources/php-cs-fixer.phar fix ./app --level=psr2
+EXIT_CODE=$((EXIT_CODE || $?))
+
+exit $EXIT_CODE

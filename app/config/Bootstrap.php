@@ -1,10 +1,9 @@
 <?php
 
-namespace app\config;
+namespace app\Config;
 
 require_once 'autoload.php';
 
-use app\config;
 use Silex;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -57,7 +56,7 @@ class Bootstrap
 
         foreach ($instructors as $instructor) {
             /**
-             * @var $instructor \app\config\Bridges\Instructor
+             * @var $instructor \app\config\Bridge\BaseInstructor
              */
             $instructor->load();
         }

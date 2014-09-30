@@ -7,22 +7,20 @@
 			"email": "topikito@gmail.com"
 		}
 	],
-	"require": {
-		"twig/twig": "*",
-		"silex/silex": "1.*",
-		"doctrine/dbal": "*",
-		"monolog/monolog": "*",
-		"doctrine/common": "*",
-		"symfony/symfony": "*",
-		"swiftmailer/swiftmailer": "5.*",
-		"facebook/php-sdk": "@stable",
-		"ruflin/elastica": "*",
-		"tpyo/amazon-s3-php-class": "*",
-		"moriony/silex-mongo-provider": "1.*",
-		"mandrill/mandrill": "1.*",
-		"kertz/twitteroauth": "dev-master"
-	},
-	"require-dev": {
-		"silex/web-profiler": "1.*"
-	}
+    "require": {
+        "twig/twig": "*",
+        "silex/silex": "1.*",
+        "doctrine/dbal": "*",
+        "monolog/monolog": "*",
+        "doctrine/common": "*",
+        "swiftmailer/swiftmailer": "5.*",
+        "ruflin/elastica": "*",
+        "mandrill/mandrill": "1.*",
+        "tedivm/jshrink": "*"
+    },
+    "require-dev": {
+        "phpmd/phpmd" : "2.0.*",
+        "silex/web-profiler": "1.*",
+        "phpunit/phpunit": "4.2.*"
+    }
 }

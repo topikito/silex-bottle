@@ -2,16 +2,17 @@
 
 namespace Topikito\Acme\Config;
 
-use app\config;
-use Topikito\Acme\Config\Route;
+use app\Config\Bridge\BaseConfigLoader;
+use app\Config\Bridge\BaseInstructor;
+use Topikito\Acme\Config;
 
-class Instructor extends config\Bridges\Instructor
+class Instructor extends BaseInstructor
 {
 
     public function prepareConfigs()
     {
         $configs = [
-            new config\Bridges\ConfigLoader($this->_app, __NAMESPACE__)
+            new BaseConfigLoader($this->_app, __NAMESPACE__)
         ];
 
         $this->_addConfigs($configs);
@@ -20,7 +21,7 @@ class Instructor extends config\Bridges\Instructor
     public function prepareRoutes()
     {
         $routes = [
-            new Route\Home($this->_app)
+            new Config\Route\Home($this->_app)
         ];
 
         $this->_addRoutes($routes);
@@ -29,17 +30,28 @@ class Instructor extends config\Bridges\Instructor
     public function prepareServices()
     {
         $services = [
-            new Service\Twig($this->_app),
-            new Service\Translator($this->_app),
-            new Service\HttpCache($this->_app),
-            new Service\Session($this->_app),
-            new Service\Doctrine($this->_app),
-            new Service\Security($this->_app),
-            new Service\Monolog($this->_app),
-            new Service\WebProfiler($this->_app)
+            new Config\ServiceLoader\TwigServiceLoader($this->_app),
+            new Config\ServiceLoader\TranslatorServiceLoader($this->_app),
+            new Config\ServiceLoader\HttpCacheServiceLoader($this->_app),
+            new Config\ServiceLoader\SessionServiceLoader($this->_app),
+            new Config\ServiceLoader\DoctrineServiceLoader($this->_app),
+            new Config\ServiceLoader\SecurityServiceLoader($this->_app),
+            new Config\ServiceLoader\MonologServiceLoader($this->_app),
+            new Config\ServiceLoader\WebProfilerServiceLoader($this->_app),
+            new Config\ServiceLoader\RedisServiceLoader($this->_app),
+            new Config\ServiceLoader\ElasticSearchServiceLoader($this->_app)
         ];
 
         $this->_addServices($services);
+    }
+
+    public function prepareMiddlewares()
+    {
+        $middlewares = [
+            new Config\Middleware\ErrorHandler($this->_app)
+        ];
+
+        $this->_addMiddlewares($middlewares);
     }
 
 }

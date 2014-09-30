@@ -1,6 +1,6 @@
 <?php
 
-namespace app\config\Interfaces;
+namespace app\Config\Interfaces;
 
 /**
  * Interface Loadable

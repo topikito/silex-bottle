@@ -1,13 +1,13 @@
 <?php
 
-namespace app\config;
+namespace app\Config;
 
 /**
  * Class AutoLoader
  *
  * @package app\config
  */
-class AutoLoader
+class Autoloader
 {
 
     private $_root;
